@@ -1,1 +1,1 @@
-# WPF_project
+Project for demonstration skill
