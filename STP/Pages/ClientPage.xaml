@@ -1,0 +1,168 @@
+﻿<Page x:Class="STP.Pages.ClientPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:STP.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="581" d:DesignWidth="900"
+      Title="ClientPage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <ListView x:Name="lv_ClientList"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      Margin="85,0,85,0"
+                      BorderBrush="Transparent">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border  Width="225" Height="130" BorderBrush="#3535" BorderThickness="2" CornerRadius="3">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Grid.Column="0"
+                                           Width="60"
+                                           Height="60"
+                                           RadiusX="100"
+                                           RadiusY="100"
+                                           Fill="#6889FF">
+
+                                </Rectangle>
+                                <StackPanel VerticalAlignment="Center"
+                                            HorizontalAlignment="Center"
+                                            Grid.Column="1">
+                                    <TextBlock Text ="{Binding nameClient}" 
+                                               Foreground="#353535"
+                                               FontSize="18"
+                                               FontWeight="DemiBold"/>
+                                    <TextBlock Text ="{Binding ClientStatus.nameStatus}" 
+                                               Foreground="#353535"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Менеджер: "/>
+                                        <TextBlock Text ="{Binding Manager.nameManager}" 
+                                               Foreground="#6889FF"/>
+                                    </StackPanel>
+                                    <TextBlock Text="Товары:"/>
+                                    <ListView ItemsSource="{Binding ClientProduct}"
+                                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                              ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                              BorderBrush="Transparent"
+                                              Height="25"
+                                              Width="110"
+                                              HorizontalAlignment="Left"
+                                              Background="Transparent">
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel/>
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text ="{Binding Product.nameProduct}" 
+                                               Foreground="#6889FF"/>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </Grid>
+        <Grid Grid.Row="1"
+              Background="#6889FF">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.05*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <ComboBox x:Name="cb_Manager"
+                              SelectionChanged="cb_Manager_SelectionChanged"
+                              VerticalContentAlignment="Center"
+                              Foreground="#353535"
+                              FontSize="16"
+                              Margin="5,10,5,10"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <ComboBox x:Name="cb_Status"
+                              SelectionChanged="cb_Status_SelectionChanged"
+                              VerticalContentAlignment="Center"
+                              Foreground="#353535"
+                              FontSize="16"
+                              Margin="5,10,5,10"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Button Background="Transparent"
+                            BorderBrush="White"
+                            Margin="5,10,5,10"
+                            x:Name="btn_addClient"
+                            Click="btn_addClient_Click">
+                        <TextBlock Text="Добавить"
+                                   Foreground="White"
+                                   FontSize="16">
+
+                        </TextBlock>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Button Background="Transparent"
+                            BorderBrush="White"
+                            Margin="5,10,5,10"
+                            x:Name="btn_editClient"
+                            Click="btn_editClient_Click">
+                        <TextBlock Text="Изменить"
+                                   Foreground="White"
+                                   FontSize="16">
+
+                        </TextBlock>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button Background="Transparent"
+                            BorderBrush="White"
+                            Margin="5,10,5,10"
+                            x:Name="btn_deleteClient"
+                            Click="btn_deleteClient_Click">
+                        <TextBlock Text="Удалить"
+                                   Foreground="White"
+                                   FontSize="16">
+
+                        </TextBlock>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

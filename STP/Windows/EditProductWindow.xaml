@@ -1,0 +1,152 @@
+﻿<Window x:Class="STP.Windows.EditProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:STP.Windows"
+        mc:Ignorable="d"
+        Title="Редактирование товара" Height="450" Width="600" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              Grid.ColumnSpan="2"
+              Background="#6889FF">
+            <TextBlock Text="Редактирование товара"
+                       Foreground="White"
+                       FontSize="24"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="1"
+              Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="1"
+                        Grid.Column="0">
+                <TextBlock Text="Название:"
+                           HorizontalAlignment="Left"
+                           Margin="40,0,0,2"
+                           Foreground="#353535"
+                           FontSize="14">
+                </TextBlock>
+                <TextBox Background="White"
+                     Grid.Row="1"
+                     Height="40"
+                     Width="220"
+                     BorderBrush="Transparent"
+                     VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Left"
+                     Padding="10,0,0,0"
+                     Foreground="#353535"
+                     FontSize="16"
+                         x:Name="tb_nameProduct">
+                    <TextBox.Effect>
+                        <DropShadowEffect BlurRadius="20" 
+                                      ShadowDepth="0" 
+                                      Opacity="0.1"/>
+                    </TextBox.Effect>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1"
+                        Grid.Column="1">
+                <TextBlock Text="Стоимость:"
+                           HorizontalAlignment="Left"
+                           Margin="40,0,0,2"
+                           Foreground="#353535"
+                           FontSize="14">
+                </TextBlock>
+                <TextBox Background="White"
+                     Grid.Row="1"
+                     Height="40"
+                     Width="220"
+                     BorderBrush="Transparent"
+                     VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Left"
+                     Padding="10,0,0,0"
+                     Foreground="#353535"
+                     FontSize="16"
+                         x:Name="tb_priceProduct">
+                    <TextBox.Effect>
+                        <DropShadowEffect BlurRadius="20" 
+                                      ShadowDepth="0" 
+                                      Opacity="0.1"/>
+                    </TextBox.Effect>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="2"
+                        Grid.Column="0">
+                <TextBlock Text="Тип товара:"
+                           HorizontalAlignment="Left"
+                           Margin="40,0,0,2"
+                           Foreground="#353535"
+                           FontSize="14">
+                </TextBlock>
+                <ComboBox Width="220"
+                          Height="40"
+                          FontSize="16"
+                          x:Name="cb_typeProduct"
+                          SelectionChanged="cb_typeProduct_SelectionChanged"
+                          Foreground="#353535">
+
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Row="2"
+                        Grid.Column="1">
+                <TextBlock Text="Срок услуги:"
+                           HorizontalAlignment="Left"
+                           Margin="40,0,0,2"
+                           Foreground="#353535"
+                           FontSize="14">
+                </TextBlock>
+                <TextBox Background="White"
+                     Grid.Row="1"
+                     Height="40"
+                     Width="220"
+                     BorderBrush="Transparent"
+                     VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Left"
+                     Padding="10,0,0,0"
+                     Foreground="#353535"
+                     FontSize="16"
+                         x:Name="tb_subTerm">
+                    <TextBox.Effect>
+                        <DropShadowEffect BlurRadius="20" 
+                                      ShadowDepth="0" 
+                                      Opacity="0.1"/>
+                    </TextBox.Effect>
+                </TextBox>
+            </StackPanel>
+            <Button Grid.Row="4"
+                    Grid.ColumnSpan="2"
+                    Height="40"
+                    Width="260"
+                    Background="#353535"
+                    x:Name="btn_EditProduct"
+                    Click="btn_EditProduct_Click">
+                <TextBlock Text="Изменить"
+                           Foreground="White"
+                           FontSize="16"/>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="2"
+              Grid.ColumnSpan="2"
+              Background="#6889FF">
+
+        </Grid>
+    </Grid>
+</Window>
+

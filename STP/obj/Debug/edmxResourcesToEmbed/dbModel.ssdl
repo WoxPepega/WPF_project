@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище STP_testModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="idClient" />
+    </Key>
+    <Property Name="idClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameClient" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="idStatus" Type="int" Nullable="false" />
+    <Property Name="idManager" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClientProduct">
+    <Key>
+      <PropertyRef Name="idClientProd" />
+    </Key>
+    <Property Name="idClientProd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idClient" Type="int" Nullable="false" />
+    <Property Name="idProduct" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClientStatus">
+    <Key>
+      <PropertyRef Name="idStatus" />
+    </Key>
+    <Property Name="idStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameStatus" Type="nvarchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Manager">
+    <Key>
+      <PropertyRef Name="idManager" />
+    </Key>
+    <Property Name="idManager" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameManager" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameProduct" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="priceProduct" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="typeProduct" Type="int" Nullable="false" />
+    <Property Name="subTerm" Type="int" />
+  </EntityType>
+  <EntityType Name="ProductType">
+    <Key>
+      <PropertyRef Name="idProductType" />
+    </Key>
+    <Property Name="idProductType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameType" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__Client__idManage__6383C8BA">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="idManager" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="idManager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client__idStatus__628FA481">
+    <End Role="ClientStatus" Type="Self.ClientStatus" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientStatus">
+        <PropertyRef Name="idStatus" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="idStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClientPro__idCli__68487DD7">
+    <End Role="Client" Type="Self.Client" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ClientProduct" Type="Self.ClientProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="idClient" />
+      </Principal>
+      <Dependent Role="ClientProduct">
+        <PropertyRef Name="idClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClientPro__idPro__693CA210">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ClientProduct" Type="Self.ClientProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="idProduct" />
+      </Principal>
+      <Dependent Role="ClientProduct">
+        <PropertyRef Name="idProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductType">
+    <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductType">
+        <PropertyRef Name="idProductType" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="typeProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище STP_testModelContainer">
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientProduct" EntityType="Self.ClientProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientStatus" EntityType="Self.ClientStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Client__idManage__6383C8BA" Association="Self.FK__Client__idManage__6383C8BA">
+      <End Role="Manager" EntitySet="Manager" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client__idStatus__628FA481" Association="Self.FK__Client__idStatus__628FA481">
+      <End Role="ClientStatus" EntitySet="ClientStatus" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ClientPro__idCli__68487DD7" Association="Self.FK__ClientPro__idCli__68487DD7">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="ClientProduct" EntitySet="ClientProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ClientPro__idPro__693CA210" Association="Self.FK__ClientPro__idPro__693CA210">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ClientProduct" EntitySet="ClientProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductType" Association="Self.FK_Product_ProductType">
+      <End Role="ProductType" EntitySet="ProductType" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

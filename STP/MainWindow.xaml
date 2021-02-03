@@ -1,0 +1,88 @@
+﻿<Window x:Class="STP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:STP"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="900" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="6.6*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              Background="#6889FF">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Fill="White"
+                               Width="50"
+                               Height="50"
+                               RadiusX="100"
+                               RadiusY="100"
+                               Margin="20,0,10,0">
+
+                    </Rectangle>
+                    <TextBlock Text="Company name"
+                               FontSize="20"
+                               Foreground="White"
+                               FontWeight="DemiBold"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center">
+
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Button Background="Transparent"
+                        BorderBrush="Transparent"
+                        x:Name="btn_Manager"
+                        Click="btn_Manager_Click">
+                    <TextBlock Text="Менеджеры"
+                               FontSize="16"
+                               Foreground="White">
+
+                    </TextBlock>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="3">
+                <Button Background="Transparent"
+                        BorderBrush="Transparent"
+                        x:Name="btn_Client"
+                        Click="btn_Client_Click">
+                    <TextBlock Text="Клиенты"
+                               FontSize="16"
+                               Foreground="White">
+
+                    </TextBlock>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="4">
+                <Button Background="Transparent"
+                        BorderBrush="Transparent"
+                        x:Name="btn_Product"
+                        Click="btn_Product_Click">
+                    <TextBlock Text="Товары"
+                               FontSize="16"
+                               Foreground="White">
+
+                    </TextBlock>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Frame x:Name="FRMain"
+                   NavigationUIVisibility="Hidden">
+
+            </Frame>
+        </Grid>
+    </Grid>
+</Window>
