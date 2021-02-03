@@ -6,13 +6,13 @@ create table Manager (
 	nameManager nvarchar(128) not null
 );
 
---Ñîçäàíèå òàáëèöû ñòàòóñîâ êëèåíòîâ
+--Создание таблицы статусов клиентов
 create table ClientStatus (
 	idStatus int not null primary key identity(1,1),
 	nameStatus nvarchar(64) not null
 );
 
---Ñîçäàíèå òàáëèöû êëèåíòîâ
+--Создание таблицы клиентов
 create table Client (
 	idClient int not null primary key identity(1,1),
 	nameClient nvarchar(128) not null,
@@ -21,13 +21,13 @@ create table Client (
 	--Êóïëåííûå òîâàðû
 );
 
---Ñîçäàíèå òàáëèöû òèïîâ òîâàðîâ
+--Создание таблицы типов товаров
 create table ProductType (
 	idProductType int not null primary key identity(1,1),
 	nameType nvarchar(128) not null
 )
 
---Ñîçäàíèå òàáëèöû òîâàðîâ
+--Создание таблицы товаров
 create table Product (
 	idProduct int not null primary key identity(1,1),
 	nameProduct nvarchar(128) not null,
@@ -36,7 +36,7 @@ create table Product (
 	subTerm int null
 );
 
---Ñîçäàíèå ñâÿçóþùåé òàáëèöû êóïëåííûõ òîâàðîâ êëèåíòàìè
+--Создание связующей таблицы купленных товаров клиентами
 create table ClientProduct (
 	idClientProd int not null primary key identity(1,1),
 	idClient int not null foreign key references Client(idClient) on delete cascade,
