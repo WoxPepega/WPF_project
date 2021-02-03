@@ -1,33 +1,33 @@
 use STP_test
 
---Создание таблицы Менеджеров
+--РЎРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ РјРµРЅРµРґР¶РµСЂРѕРІ
 create table Manager ( 
 	idManager int not null primary key identity(1,1),
 	nameManager nvarchar(128) not null
 );
 
---Создание таблицы статусов клиентов
+--Г‘Г®Г§Г¤Г Г­ГЁГҐ ГІГ ГЎГ«ГЁГ¶Г» Г±ГІГ ГІГіГ±Г®Гў ГЄГ«ГЁГҐГ­ГІГ®Гў
 create table ClientStatus (
 	idStatus int not null primary key identity(1,1),
 	nameStatus nvarchar(64) not null
 );
 
---Создание таблицы клиентов
+--Г‘Г®Г§Г¤Г Г­ГЁГҐ ГІГ ГЎГ«ГЁГ¶Г» ГЄГ«ГЁГҐГ­ГІГ®Гў
 create table Client (
 	idClient int not null primary key identity(1,1),
 	nameClient nvarchar(128) not null,
 	idStatus int not null foreign key references ClientStatus(idStatus),
 	idManager int not null foreign key references Manager(idManager) on delete cascade,
-	--Купленные товары
+	--ГЉГіГЇГ«ГҐГ­Г­Г»ГҐ ГІГ®ГўГ Г°Г»
 );
 
---Создание таблицы типов товаров
+--Г‘Г®Г§Г¤Г Г­ГЁГҐ ГІГ ГЎГ«ГЁГ¶Г» ГІГЁГЇГ®Гў ГІГ®ГўГ Г°Г®Гў
 create table ProductType (
 	idProductType int not null primary key identity(1,1),
 	nameType nvarchar(128) not null
 )
 
---Создание таблицы товаров
+--Г‘Г®Г§Г¤Г Г­ГЁГҐ ГІГ ГЎГ«ГЁГ¶Г» ГІГ®ГўГ Г°Г®Гў
 create table Product (
 	idProduct int not null primary key identity(1,1),
 	nameProduct nvarchar(128) not null,
@@ -36,7 +36,7 @@ create table Product (
 	subTerm int null
 );
 
---Создание связующей таблицы купленных товаров клиентами
+--Г‘Г®Г§Г¤Г Г­ГЁГҐ Г±ГўГїГ§ГіГѕГ№ГҐГ© ГІГ ГЎГ«ГЁГ¶Г» ГЄГіГЇГ«ГҐГ­Г­Г»Гµ ГІГ®ГўГ Г°Г®Гў ГЄГ«ГЁГҐГ­ГІГ Г¬ГЁ
 create table ClientProduct (
 	idClientProd int not null primary key identity(1,1),
 	idClient int not null foreign key references Client(idClient) on delete cascade,
