@@ -18,7 +18,7 @@ create table Client (
 	nameClient nvarchar(128) not null,
 	idStatus int not null foreign key references ClientStatus(idStatus),
 	idManager int not null foreign key references Manager(idManager) on delete cascade,
-	--Êóïëåííûå òîâàðû
+	--Товары клиента
 );
 
 --Создание таблицы типов товаров
